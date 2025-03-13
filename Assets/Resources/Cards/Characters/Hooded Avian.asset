@@ -15,12 +15,12 @@ MonoBehaviour:
   cardName: Hooded Avian
   cardType: 05000000
   cardSprite: {fileID: 21300000, guid: 1c3c14d3798e03a42a6df1c78e00b4b6, type: 3}
-  description: 
+  description: A
   cost: 0
   range: 0
   attackPattern: 0
   priorityTarget: 0
-  damageType: 
+  damageType: 05000000
   prefab: {fileID: 1577502023061052, guid: 438423df18ba0f64ab984b82da4eefee, type: 3}
   health: 4
   damageMin: 4

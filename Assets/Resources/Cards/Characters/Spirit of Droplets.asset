@@ -15,12 +15,12 @@ MonoBehaviour:
   cardName: Spirit of Droplets
   cardType: 02000000
   cardSprite: {fileID: 0}
-  description: 
+  description: A
   cost: 1
   range: 0
   attackPattern: 0
   priorityTarget: 0
-  damageType: 
+  damageType: 02000000
   prefab: {fileID: 2618609479374377528, guid: 14bb677d11867704ca3b25080fbcadcf, type: 3}
   health: 3
   damageMin: 1

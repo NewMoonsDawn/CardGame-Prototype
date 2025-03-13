@@ -15,7 +15,7 @@ MonoBehaviour:
   cardName: Bow of Thunder
   cardType: 0500000002000000
   cardSprite: {fileID: 21300000, guid: 1270fddaff5d5c44da7ce16d3257cd85, type: 3}
-  description: 
+  description: A
   cost: 1
   spellType: 0
   attributeTarget: 01000000

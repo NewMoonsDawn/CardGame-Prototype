@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f88fcfc3878c05469aba564311bad64, type: 3}
-  m_Name: New Spell Card 2
+  m_Name: Dark Void
   m_EditorClassIdentifier: 
   cardName: Dark Void
   cardType: 03000000
   cardSprite: {fileID: 0}
-  description: 
+  description: A
   cost: 2
   spellType: 1
   attributeTarget: 00000000
