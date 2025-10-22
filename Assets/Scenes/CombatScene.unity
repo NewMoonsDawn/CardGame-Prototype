@@ -420,6 +420,62 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 313620539622484471, guid: 3f6b104502cc3bc4d83b5bdae677a78f, type: 3}
+      propertyPath: allcards.Array.size
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 313620539622484471, guid: 3f6b104502cc3bc4d83b5bdae677a78f, type: 3}
+      propertyPath: allcards.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 87834c41f8569d347b7a874fcb9bf1d1, type: 2}
+    - target: {fileID: 313620539622484471, guid: 3f6b104502cc3bc4d83b5bdae677a78f, type: 3}
+      propertyPath: allcards.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0d11aecd67db4c94fbf46c6f92f8a946, type: 2}
+    - target: {fileID: 313620539622484471, guid: 3f6b104502cc3bc4d83b5bdae677a78f, type: 3}
+      propertyPath: allcards.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 10ca43a8f78c22f489953a30841abcff, type: 2}
+    - target: {fileID: 313620539622484471, guid: 3f6b104502cc3bc4d83b5bdae677a78f, type: 3}
+      propertyPath: allcards.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0206447d5987d8d44aabd3c87ac737fd, type: 2}
+    - target: {fileID: 313620539622484471, guid: 3f6b104502cc3bc4d83b5bdae677a78f, type: 3}
+      propertyPath: allcards.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: ba9e341e292ad024ca707b6d1728b654, type: 2}
+    - target: {fileID: 313620539622484471, guid: 3f6b104502cc3bc4d83b5bdae677a78f, type: 3}
+      propertyPath: allcards.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: ba9e341e292ad024ca707b6d1728b654, type: 2}
+    - target: {fileID: 313620539622484471, guid: 3f6b104502cc3bc4d83b5bdae677a78f, type: 3}
+      propertyPath: allcards.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: ba9e341e292ad024ca707b6d1728b654, type: 2}
+    - target: {fileID: 313620539622484471, guid: 3f6b104502cc3bc4d83b5bdae677a78f, type: 3}
+      propertyPath: allcards.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: ba9e341e292ad024ca707b6d1728b654, type: 2}
+    - target: {fileID: 313620539622484471, guid: 3f6b104502cc3bc4d83b5bdae677a78f, type: 3}
+      propertyPath: allcards.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: 830aebbe7aa081545a278405f36dc5cd, type: 2}
+    - target: {fileID: 313620539622484471, guid: 3f6b104502cc3bc4d83b5bdae677a78f, type: 3}
+      propertyPath: allcards.Array.data[9]
+      value: 
+      objectReference: {fileID: 11400000, guid: 03a2b218dcd3c39408c91db3cfcb031c, type: 2}
+    - target: {fileID: 313620539622484471, guid: 3f6b104502cc3bc4d83b5bdae677a78f, type: 3}
+      propertyPath: allcards.Array.data[10]
+      value: 
+      objectReference: {fileID: 11400000, guid: e38b04029621d0d4a9c83854ad2664a5, type: 2}
+    - target: {fileID: 313620539622484471, guid: 3f6b104502cc3bc4d83b5bdae677a78f, type: 3}
+      propertyPath: allcards.Array.data[11]
+      value: 
+      objectReference: {fileID: 11400000, guid: ecc8a2512f35e4f4b9b3be16ca2db433, type: 2}
+    - target: {fileID: 313620539622484471, guid: 3f6b104502cc3bc4d83b5bdae677a78f, type: 3}
+      propertyPath: allcards.Array.data[12]
+      value: 
+      objectReference: {fileID: 11400000, guid: ba9e341e292ad024ca707b6d1728b654, type: 2}
     - target: {fileID: 1649404899936427021, guid: 3f6b104502cc3bc4d83b5bdae677a78f, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -477,6 +533,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6340286192876106738, guid: f7baba21db30d2d458ddfd61245bd728, type: 3}
+      propertyPath: cardsInHand.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6390586160281201189, guid: f7baba21db30d2d458ddfd61245bd728, type: 3}
+      propertyPath: maxHandSize
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7484030006927131428, guid: f7baba21db30d2d458ddfd61245bd728, type: 3}
       propertyPath: m_Pivot.x
       value: 0

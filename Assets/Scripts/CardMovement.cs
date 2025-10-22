@@ -187,17 +187,32 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
 
         if(!Input.GetMouseButton(0))
         {
+            cardData = cardDisplay.cardData;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if(cardData is Character character)
             {
-                TryToPlayCharacterCard(ray, character);
+                if (TryToPlayCharacterCard(ray, character))
+                {
+                    floating = false;
+                    currentState = 0;
+                    glowEffect.SetActive(false);
+                    playArrow.SetActive(false);
+                }
             }
-            if(cardData is Spell spell)
+            else if(cardData is Spell spell)
             {
-                TryToPlaySpellCard(ray, spell);
+               if (TryToPlaySpellCard(ray, spell))
+                {
+                    floating = false;
+                    currentState = 0;
+                    glowEffect.SetActive(false);
+                    playArrow.SetActive(false);
+                }
             }
-
-            TransitionToStateZero();
+            if (currentState != 0)
+            {
+                TransitionToStateZero();
+            }
         }
 
         if (Input.mousePosition.y < cardPlay.y)
@@ -206,7 +221,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
             playArrow.SetActive(false);
         }
     }
-    private void TryToPlayCharacterCard(Ray ray, Character characterCard)
+    private bool TryToPlayCharacterCard(Ray ray, Character characterCard)
     {
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, gridLayerMask);
         if (hit.collider != null && hit.collider.GetComponent<GridCell>())
@@ -218,12 +233,16 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
                 discardManager.AddToDiscard(cardData);
                 handManager.cardsInHand.Remove(gameObject);
                 handManager.UpdateHandVisuals();
-                Debug.Log("Placed character");
                 Destroy(gameObject);
+                return true;
             }
+            else
+                return false;
         }
+        else
+            return false;
     }
-    private void TryToPlaySpellCard(Ray ray, Spell spellCard)
+    private bool TryToPlaySpellCard(Ray ray, Spell spellCard)
     {
         RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity,characterLayerMask);
         if (hit.collider != null)
@@ -231,9 +250,10 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
            discardManager.AddToDiscard(cardData);
            handManager.cardsInHand.Remove(gameObject);
            handManager.UpdateHandVisuals();
-           Debug.Log("Played Spell");
            Destroy(gameObject);
+            return true;
         }
+        else return false;
     }
 
     private async Task LerpToPositionStateZero(Vector3 targetPosition, Quaternion targetRotation)

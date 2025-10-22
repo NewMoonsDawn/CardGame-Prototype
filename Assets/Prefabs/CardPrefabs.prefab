@@ -1314,6 +1314,41 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 2.5, y: 3.5}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &5650722225678025298
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3242288973127408816}
+  m_Layer: 0
+  m_Name: SpellTypeLabel2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3242288973127408816
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5650722225678025298}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3275521966088843017}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5665998561165273754
 GameObject:
   m_ObjectHideFlags: 0
@@ -1693,6 +1728,41 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3275521966088843017}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6926479349142610221
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3440325728808668751}
+  m_Layer: 0
+  m_Name: SpellAttributeLabel2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3440325728808668751
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6926479349142610221}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3275521966088843017}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7517139188815336715
 GameObject:
   m_ObjectHideFlags: 0
@@ -1731,7 +1801,9 @@ RectTransform:
   - {fileID: 6896570725334367398}
   - {fileID: 7705312446179990383}
   - {fileID: 5705109332751595002}
+  - {fileID: 3242288973127408816}
   - {fileID: 6969589437499717606}
+  - {fileID: 3440325728808668751}
   - {fileID: 372800572245086699}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1763,7 +1835,7 @@ MonoBehaviour:
   - {fileID: 8605965166649144057}
   cardBackground: {fileID: 4496620558302837649}
   characterElements: {fileID: 2562104554591189386}
-  spellElements: {fileID: 0}
+  spellElements: {fileID: 2562104554591189386}
   characterCardLabel: {fileID: 6241333290544997887}
   spellCardLabel: {fileID: 5169526721795660183}
   descriptionText: {fileID: 3288286777528994703}
@@ -1771,8 +1843,10 @@ MonoBehaviour:
   damageText: {fileID: 4655445246855507677}
   spellTypeLabels:
   - {fileID: 3605179524318515211}
+  - {fileID: 6926479349142610221}
   attributeTargetSymbols:
   - {fileID: 2281826946220892692}
+  - {fileID: 5650722225678025298}
   attributeSymbolSpacing: 10
   attributeChangeAmountText: {fileID: 3455524344441607497}
 --- !u!61 &7936183326847110640
