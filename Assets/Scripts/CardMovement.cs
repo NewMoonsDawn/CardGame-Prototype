@@ -148,7 +148,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
             currentState = 2;
         }
     }
-
+    
     public void OnDrag(PointerEventData eventData)
     {
         if (currentState == 2)
@@ -181,7 +181,6 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         {
             GameManager.Instance.PlayingCard = true;
         }
-        //await LerpToPosition(playPosition,Quaternion.identity);
         rectTransform.localPosition = Vector3.Lerp(rectTransform.localPosition, playPosition, lerpFactor);
         rectTransform.localRotation = Quaternion.identity;
 
