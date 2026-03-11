@@ -49,8 +49,9 @@ namespace CardGame
     }
     public enum SpellType
     {
-        Buff,
-        Debuff
+        Fire,
+        Water,
+        Physical,
     }
     public enum AttributeTarget
     {

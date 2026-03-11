@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f88fcfc3878c05469aba564311bad64, type: 3}
-  m_Name: Bow of Thunder
+  m_Name: Ice Block
   m_EditorClassIdentifier: 
-  cardName: Bow of Thunder
-  cardType: 0500000002000000
-  cardSprite: {fileID: 21300000, guid: 1270fddaff5d5c44da7ce16d3257cd85, type: 3}
-  description: A
-  cost: 1
-  spellType: 0
-  attributeTarget: 01000000
-  attributeChangeAmount: 03000000
+  Type: 1
+  spellName: Ice Block
+  description: Gain *Y* Block.
+  spellArt: {fileID: 21300000, guid: 39657f4a98cf50b4d9f6375de48dd166, type: 3}
+  spellAttachements: []
+  damage: 0
+  block: 3

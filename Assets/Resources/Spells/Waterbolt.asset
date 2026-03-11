@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f88fcfc3878c05469aba564311bad64, type: 3}
-  m_Name: Dark Void
+  m_Name: Waterbolt
   m_EditorClassIdentifier: 
-  cardName: Dark Void
-  cardType: 03000000
-  cardSprite: {fileID: 21300000, guid: bd35da5250e694e4abb9a8af9ccd1b1e, type: 3}
-  description: A
-  cost: 2
-  spellType: 1
-  attributeTarget: 00000000
-  attributeChangeAmount: 05000000
+  Type: 1
+  spellName: Waterbolt
+  description: Deal *X* damage
+  spellArt: {fileID: 21300000, guid: f7fa4d31dd34c12469d4ff3a8556bf4d, type: 3}
+  spellAttachements: []
+  damage: 0
+  block: 0

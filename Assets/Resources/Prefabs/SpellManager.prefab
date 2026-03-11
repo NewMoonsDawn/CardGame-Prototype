@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4905883304867376951
+--- !u!1 &7122876673237191080
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,43 +8,41 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6211568077310315022}
-  - component: {fileID: 7481202856629224326}
+  - component: {fileID: 514923008470933889}
+  - component: {fileID: -6558880315389587240}
   m_Layer: 0
-  m_Name: GridManager
+  m_Name: SpellManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6211568077310315022
+--- !u!4 &514923008470933889
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4905883304867376951}
+  m_GameObject: {fileID: 7122876673237191080}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.25, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalPosition: {x: 1148.0779, y: 444.83356, z: 5.7951646}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7481202856629224326
+--- !u!114 &-6558880315389587240
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4905883304867376951}
+  m_GameObject: {fileID: 7122876673237191080}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df22924bc793e7a44bab7fe91da6e938, type: 3}
+  m_Script: {fileID: 11500000, guid: 490bea7d3c523cf4d8112b1a7ba58693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 1
-  height: 3
-  gridCellPrefab: {fileID: 2661131780947843984, guid: dde3219f39e90204591293d3fd302439, type: 3}
-  gridObjects: []
+  ownedSpells:
+  - {fileID: 11400000, guid: 1a1f79e2c560833459e807c8681fd75b, type: 2}

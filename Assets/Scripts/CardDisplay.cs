@@ -92,11 +92,10 @@ public class CardDisplay : MonoBehaviour
             UpdateDisplayCharacterCard(character);
 
         }
-        if(cardData is Spell spell)
-        {
-            UpdateDisplaySpellCard(spell);
-        }
-;
+       // if(cardData is Spell spell)
+       // {
+       //     UpdateDisplaySpellCard(spell);
+       // }
     }
     public void UpdateDisplayCharacterCard(Character character)
     {
@@ -106,32 +105,32 @@ public class CardDisplay : MonoBehaviour
         healthText.text = character.health.ToString();
         damageText.text = $"{character.damageMin} - {character.damageMax}";
     }
-    public void UpdateDisplaySpellCard(Spell spell)
-    {
-        spellElements.SetActive(true);
-        characterElements.SetActive(false);
-        spellCardLabel.SetActive(true);
+    //public void UpdateDisplaySpellCard(Spell spell)
+   // {
+       // spellElements.SetActive(true);
+       // characterElements.SetActive(false);
+       // spellCardLabel.SetActive(true);
 
         //Set correct spell type label
-        foreach(GameObject label in spellTypeLabels)
-        {
-            label.SetActive(false);
-        }
-        spellTypeLabels[(int)spell.spellType].SetActive(true); 
-        foreach(GameObject label in attributeTargetSymbols)
-        {
-            label.SetActive(false);
-        }
-        for(int i =0;i<spell.attributeTarget.Count;i++)
-        {
-            GameObject currentSymbol = attributeTargetSymbols[(int)spell.attributeTarget[i]];
-            currentSymbol.SetActive(true);
-            float newYPosition = i * attributeSymbolSpacing;
-            currentSymbol.transform.localPosition = new Vector3(0, newYPosition, 0);
-        }
+       // foreach(GameObject label in spellTypeLabels)
+       // {
+        //    label.SetActive(false);
+        //}
+       // spellTypeLabels[(int)spell.spellType].SetActive(true); 
+        //foreach(GameObject label in attributeTargetSymbols)
+       // {
+       //     label.SetActive(false);
+       // }
+       // for(int i =0;i<spell.attributeTarget.Count;i++)
+        //{
+          //  GameObject currentSymbol = attributeTargetSymbols[(int)spell.attributeTarget[i]];
+           // currentSymbol.SetActive(true);
+           // float newYPosition = i * attributeSymbolSpacing;
+           // currentSymbol.transform.localPosition = new Vector3(0, newYPosition, 0);
+        //}
 
-        attributeChangeAmountText.text = string.Join(", ", spell.attributeChangeAmount);
-    }
+       // attributeChangeAmountText.text = string.Join(", ", spell.attributeChangeAmount);
+   // }
     public void UpdateHealth(int health)
     {
         if (cardData is Character character)

@@ -36,7 +36,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     [SerializeField]
     private int playPositionYDivider = 2;
     [SerializeField]
-    private float playPositionYMultiplier = 1.5f;
+    private float playPositionYMultiplier = 1f;
     [SerializeField]
     private int playPositionXDivider = -4;
     [SerializeField]
@@ -198,16 +198,16 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
                     playArrow.SetActive(false);
                 }
             }
-            else if(cardData is Spell spell)
-            {
-               if (TryToPlaySpellCard(ray, spell))
-                {
-                    floating = false;
-                    currentState = 0;
-                    glowEffect.SetActive(false);
-                    playArrow.SetActive(false);
-                }
-            }
+            //else if(cardData is Spell spell)
+            //{
+             //  if (TryToPlaySpellCard(ray, spell))
+             //   {
+             //       floating = false;
+             //       currentState = 0;
+             //       glowEffect.SetActive(false);
+             //       playArrow.SetActive(false);
+             //   }
+            //}
             if (currentState != 0)
             {
                 TransitionToStateZero();

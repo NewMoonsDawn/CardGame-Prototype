@@ -7,11 +7,13 @@ using CardGame;
 public class DeckManager : MonoBehaviour
 {
     public List<Card> allcards = new List<Card>();
-    public int startingHand = 6;
-    public int maxHandSize = 10;
+    public int startingHand;
+    public int maxHandSize;
     public int currentHandSize;
     private HandManager handManager;
     private DrawPileManager drawPileManager;
+    private SpellbookManager spellbookManager;
+    private SpellManager spellManager;
     private bool startBattleRun = true;
     private void Start()
     {
@@ -29,6 +31,14 @@ public class DeckManager : MonoBehaviour
         {
             handManager = FindObjectOfType<HandManager>();
         }
+        if(spellbookManager == null)
+        {
+            spellbookManager = FindObjectOfType<SpellbookManager>();
+        }
+        if(spellManager == null)
+        {
+            spellManager = FindObjectOfType<SpellManager>();
+        }
     }
     private void Update()
     {
@@ -43,5 +53,6 @@ public class DeckManager : MonoBehaviour
         drawPileManager.MakeDrawPile(allcards);
         drawPileManager.BattleSetup(startingHand, maxHandSize);
         startBattleRun = false;
+        spellbookManager.BattleSetup(spellManager);
     }
 }
