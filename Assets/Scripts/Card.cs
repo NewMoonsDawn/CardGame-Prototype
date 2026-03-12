@@ -9,10 +9,10 @@ namespace CardGame
     public class Card : ScriptableObject
     {
         public string cardName;
-        public List<ElementType> cardType;
+        public ElementType cardType;
         public Sprite cardSprite;
         public string description;
-        public int cost;
+        //public int cost;
        
     }
 
@@ -24,28 +24,7 @@ namespace CardGame
         Water,
         Dark,
         Light,
-        Air,
-    }
-
-    public enum AttackPattern
-    {
-        Single,
-        MultiTarget,
-        Cross,
-        Column,
-        Row,
-        TwoByTwo,
-        FourByFour
-    }
-
-    public enum PriorityTarget
-    {
-        Close,
-        Far,
-        LeastCurrentHealth,
-        MostCurrentHealth,
-        MostMaxHealth,
-        MostDamage
+        Physical,
     }
     public enum SpellType
     {

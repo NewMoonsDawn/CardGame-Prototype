@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f88fcfc3878c05469aba564311bad64, type: 3}
   m_Name: Thwack
   m_EditorClassIdentifier: 
-  Type: 2
+  Type: 5
   spellName: Thwack
-  description: Do *X* physical damage
+  description: Inflict *X* Damage, Draw *Z* cards
   spellArt: {fileID: -1730254177, guid: 132358e9bf26b60458b731bf001e31db, type: 3}
   spellAttachements: []
   damage: 3
   block: 0
+  draw: 1

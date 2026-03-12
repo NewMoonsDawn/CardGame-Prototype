@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using CardGame;
-using System;
-using JetBrains.Annotations;
+using System.Text.RegularExpressions;
 
 [ExecuteInEditMode]
 public class CardDisplay : MonoBehaviour
@@ -14,8 +13,7 @@ public class CardDisplay : MonoBehaviour
     public Card cardData;
     public Image cardImage;
     public TMP_Text cardName;
-    public TMP_Text costText;
-    public Image[] typeImages;
+    public Image typeImage;
     public Image cardBackground;
     
     public static Sprite lightSprite;
@@ -42,24 +40,9 @@ public class CardDisplay : MonoBehaviour
     public GameObject spellCardLabel;
     public TMP_Text descriptionText;
 
-    //Character Card Elements
-    public TMP_Text healthText;
-    public TMP_Text damageText;
-
-    //Spell Card Elements
-
-    public GameObject[] spellTypeLabels;
-    public GameObject[] attributeTargetSymbols;
-    public float attributeSymbolSpacing = 10f;
-    public TMP_Text attributeChangeAmountText;
-
 
     void Start()
     {
-        for (int i = 0; i < typeImages.Length; i++)
-        {
-            typeImages[i].gameObject.SetActive(false);
-        }
         InitializeSprites();
         UpdateCardDisplay();
     }
@@ -68,43 +51,42 @@ public class CardDisplay : MonoBehaviour
     {
         Color typeColor = new Color();
         Sprite typeSprite;
-        typeColors.TryGetValue(cardData.cardType[0].ToString(), out typeColor);
+        typeColors.TryGetValue(cardData.cardType.ToString(), out typeColor);
         cardBackground.color = new Color(typeColor.r, typeColor.g, typeColor.b, 0.5f);
 
 
         cardName.text = cardData.name;
-        costText.text = cardData.cost.ToString();
         cardImage.sprite = cardData.cardSprite;
-        descriptionText.text = cardData.description;
-
-        for (int i = 0; i < cardData.cardType.Count; i++)
-        {
-           // typeColors.TryGetValue(cardData.cardType[i].ToString(), out typeColor);
-            typeSprites.TryGetValue(cardData.cardType[i].ToString(), out typeSprite);
-            typeImages[i].color = Color.white; 
-            typeImages[i].sprite = typeSprite;
-            typeImages[i].gameObject.SetActive(true);
-        }
+        typeSprites.TryGetValue(cardData.cardType.ToString(), out typeSprite);
+        typeImage.color = Color.white; 
+        typeImage.sprite = typeSprite;
+        typeImage.gameObject.SetActive(true);
 
         //Specific Card Changes
-        if (cardData is Character character)
-        {
-            UpdateDisplayCharacterCard(character);
+       // if (cardData is Character character)
+        //{
+          //  UpdateDisplayCharacterCard(character);
 
-        }
-       // if(cardData is Spell spell)
-       // {
-       //     UpdateDisplaySpellCard(spell);
-       // }
+      //  }
+       if(cardData is Ritual ritual)
+       {
+            UpdateDisplayRitualCard(ritual);
+       }
     }
-    public void UpdateDisplayCharacterCard(Character character)
+
+    private void UpdateDisplayRitualCard(Ritual ritual)
     {
-        spellElements.SetActive(false);
-        characterElements.SetActive(true);
-        characterCardLabel.SetActive(true);
-        healthText.text = character.health.ToString();
-        damageText.text = $"{character.damageMin} - {character.damageMax}";
+        descriptionText.text = cardData.description.Replace("X", ritual.damage.ToString()).Replace("Y",ritual.block.ToString());
     }
+
+   // public void UpdateDisplayCharacterCard(Character character)
+    //{
+      //  spellElements.SetActive(false);
+      // characterElements.SetActive(true);
+       // characterCardLabel.SetActive(true);
+        //healthText.text = character.health.ToString();
+        //damageText.text = $"{character.damageMin} - {character.damageMax}";
+    //}
     //public void UpdateDisplaySpellCard(Spell spell)
    // {
        // spellElements.SetActive(true);
@@ -131,63 +113,38 @@ public class CardDisplay : MonoBehaviour
 
        // attributeChangeAmountText.text = string.Join(", ", spell.attributeChangeAmount);
    // }
-    public void UpdateHealth(int health)
+
+    public void UpdateDamage(int damage)
     {
-        if (cardData is Character character)
+        if (cardData is Ritual ritual)
         {
-            healthText.text = health.ToString();
-            if (health < character.health)
+            string damageColor = "";
+            if (damage < ritual.damage)
             {
-                healthText.color = Color.red;
-                return;
+                damageColor = "#FF0000"; // Set Color to Red
             }
-            if (health > character.health)
+            else if (damage > ritual.damage)
             {
-                healthText.color = Color.green;
-                return;
+                damageColor = "#00FF00"; // Set Color to Green
             }
+
+            descriptionText.text = Regex.Replace(descriptionText.text, "Damage ^[0-9]+$", $"<color={damageColor}>Damage {damage}</color>)");
+            ritual.damage = damage;
         }
     }
 
-    public void UpdateDamage(int damageMin, int damageMax)
-    {
-        if (cardData is Character character)
-        {
-            string damageMinColor = "";
-            string damageMaxColor = "";
-            if (damageMin < character.damageMax)
-            {
-                damageMinColor = "#FF0000"; // Set Color to Red
-            }
-            else if (damageMin > character.damageMin)
-            {
-                damageMinColor = "#00FF00"; // Set Color to Green
-            }
-            if (damageMax < character.damageMax)
-            {
-                damageMaxColor = "#FF0000"; // Set Color to Red
-            }
-            else if (damageMax > character.damageMax)
-            {
-                damageMaxColor = "#00FF00"; // Set Color to Green
-            }
-
-            damageText.text = $"<color={damageMinColor}>{damageMin}</color>-<color={damageMaxColor}>{damageMax}</color>";
-        }
-    }
-
-    public void UpdateCost(int cost)
-    {
-        if (cost < cardData.cost)
-        {
-            costText.color = Color.green;
-        }
-        if(cost > cardData.cost)
-        {
-            costText.color = Color.red;
-        }
-        costText.text = cost.ToString(); 
-    }
+    //public void UpdateCost(int cost)
+    //{
+       //if (cost < cardData.cost)
+        //{
+          //  costText.color = Color.green;
+        //}
+        //if(cost > cardData.cost)
+        //{
+          //  costText.color = Color.red;
+        //}
+      //  costText.text = cost.ToString(); 
+    //}
 
     public void InitializeSprites()
     {

@@ -1810,7 +1810,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2.5, y: 3.5}
+  m_SizeDelta: {x: 1.5, y: 2.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2264845218645860810
 MonoBehaviour:
@@ -1827,28 +1827,13 @@ MonoBehaviour:
   cardData: {fileID: 0}
   cardImage: {fileID: 8668094627762760166}
   cardName: {fileID: 8118783489230441538}
-  costText: {fileID: 6156923261399993065}
-  typeImages:
-  - {fileID: 3438094600200263115}
-  - {fileID: 9084358250512422298}
-  - {fileID: 7699641954310911843}
-  - {fileID: 8605965166649144057}
+  typeImage: {fileID: 0}
   cardBackground: {fileID: 4496620558302837649}
   characterElements: {fileID: 2562104554591189386}
   spellElements: {fileID: 2562104554591189386}
   characterCardLabel: {fileID: 6241333290544997887}
   spellCardLabel: {fileID: 5169526721795660183}
   descriptionText: {fileID: 3288286777528994703}
-  healthText: {fileID: 1498143219690072527}
-  damageText: {fileID: 4655445246855507677}
-  spellTypeLabels:
-  - {fileID: 3605179524318515211}
-  - {fileID: 6926479349142610221}
-  attributeTargetSymbols:
-  - {fileID: 2281826946220892692}
-  - {fileID: 5650722225678025298}
-  attributeSymbolSpacing: 10
-  attributeChangeAmountText: {fileID: 3455524344441607497}
 --- !u!61 &7936183326847110640
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1907,19 +1892,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectScale: 1.1
-  cardPlay: {x: 0, y: 500}
-  playPosition: {x: -600, y: 700, z: 0}
-  glowEffect: {fileID: 2551038951790050663}
-  playArrow: {fileID: 5919648062749850879}
+  cardPlay: {x: 0, y: -397.28738}
+  playPosition: {x: 0, y: -556.20233, z: 0}
+  glowEffect: {fileID: 0}
+  playArrow: {fileID: 0}
   lerpFactor: 0.1
-  cardPlayDivider: 4
-  cardPlayMultiplier: 1
-  needUpdateCardPlayPosition: 1
-  playPositionYDivider: 2
-  playPositionYMultiplier: 1.15
-  playPositionXDivider: -5
-  playPositionXMultiplier: 1.8
-  needUpdatePlayPosition: 1
+  cardPlayDivider: 7
+  cardPlayMultiplier: -1
+  needUpdateCardPlayPosition: 0
+  playPositionYDivider: 5
+  playPositionYMultiplier: -1
+  playPositionXDivider: 2
+  playPositionXMultiplier: 0
+  needUpdatePlayPosition: 0
   maxColumn: 2
 --- !u!1 &8082280762766528459
 GameObject:

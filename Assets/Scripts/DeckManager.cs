@@ -17,9 +17,9 @@ public class DeckManager : MonoBehaviour
     private bool startBattleRun = true;
     private void Start()
     {
-        Card[] cards = Resources.LoadAll<Card>("Cards");
+       // Card[] cards = Resources.LoadAll<Card>("Cards");
 
-        allcards.AddRange(cards);
+       // allcards.AddRange(cards);
     }
     void Awake()
     {
@@ -50,7 +50,7 @@ public class DeckManager : MonoBehaviour
     public void BattleSetup()
     {
         handManager.BattleSetup(maxHandSize);
-        drawPileManager.MakeDrawPile(allcards);
+        //drawPileManager.MakeDrawPile(allcards);
         drawPileManager.BattleSetup(startingHand, maxHandSize);
         startBattleRun = false;
         spellbookManager.BattleSetup(spellManager);

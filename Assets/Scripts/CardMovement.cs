@@ -26,30 +26,30 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     [SerializeField]
     private GameObject playArrow;
     [SerializeField]
-    private float lerpFactor = 0.1f;
+    private float lerpFactor;
     [SerializeField]
-    private int cardPlayDivider = 4;
+    private int cardPlayDivider;
     [SerializeField]
-    private float cardPlayMultiplier = 1f;
+    private float cardPlayMultiplier;
     [SerializeField]
-    private bool needUpdateCardPlayPosition = false;
+    private bool needUpdateCardPlayPosition;
     [SerializeField]
-    private int playPositionYDivider = 2;
+    private int playPositionYDivider;
     [SerializeField]
-    private float playPositionYMultiplier = 1f;
+    private float playPositionYMultiplier;
     [SerializeField]
-    private int playPositionXDivider = -4;
+    private int playPositionXDivider;
     [SerializeField]
-    private float playPositionXMultiplier = 1f;
+    private float playPositionXMultiplier;
     [SerializeField]
-    private bool needUpdatePlayPosition = false;
+    private bool needUpdatePlayPosition;
 
     private bool floating = false;
-    private GridManager gridManager;
+    private SpellbookManager spellbookManager;
 
     public int maxColumn = 2;
 
-    private LayerMask gridLayerMask;
+    private LayerMask spellbookLayerMask;
     private LayerMask characterLayerMask;
 
     private Card cardData;
@@ -72,26 +72,26 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
 
         updateCardPlayPosition();
         updatePlayPosition();
-        gridManager = FindObjectOfType<GridManager>();
+        spellbookManager = FindObjectOfType<SpellbookManager>();
         handManager = FindObjectOfType<HandManager>();
         discardManager = FindObjectOfType<DiscardManager>();
         cardDisplay = GetComponent<CardDisplay>();
 
-        gridLayerMask = LayerMask.GetMask("Grid");
+        spellbookLayerMask = LayerMask.GetMask("Spellbook");
         characterLayerMask = LayerMask.GetMask("Characters");
         cardData = cardDisplay.cardData;
     }
 
     void Update()
     {
-        if (needUpdateCardPlayPosition)
-        {
+       if (needUpdateCardPlayPosition)
+       {
             updateCardPlayPosition();
         }
         if (needUpdatePlayPosition)
         {
             updatePlayPosition();
-        }
+       }
 
         switch (currentState)
         {
@@ -153,11 +153,11 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     {
         if (currentState == 2)
         {
-                if (rectTransform.localPosition.y > cardPlay.y)
-                {
-                    currentState = 3;
-                    playArrow.SetActive(true);
-                }
+            if (rectTransform.localPosition.y < cardPlay.y)
+            {
+                currentState = 3;
+                //playArrow.SetActive(true);
+            }
         }
     }
 
@@ -187,72 +187,65 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
         if(!Input.GetMouseButton(0))
         {
             cardData = cardDisplay.cardData;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if(cardData is Character character)
+            if(cardData is Ritual ritual)
             {
-                if (TryToPlayCharacterCard(ray, character))
-                {
-                    floating = false;
-                    currentState = 0;
-                    glowEffect.SetActive(false);
-                    playArrow.SetActive(false);
-                }
+             if (TryToPlayRitualCard(ritual))
+               {
+                   floating = false;
+                   currentState = 0;
+                   glowEffect.SetActive(false);
+                   playArrow.SetActive(false);
+               }
             }
-            //else if(cardData is Spell spell)
-            //{
-             //  if (TryToPlaySpellCard(ray, spell))
-             //   {
-             //       floating = false;
-             //       currentState = 0;
-             //       glowEffect.SetActive(false);
-             //       playArrow.SetActive(false);
-             //   }
-            //}
             if (currentState != 0)
             {
                 TransitionToStateZero();
             }
         }
 
-        if (Input.mousePosition.y < cardPlay.y)
+        if (Input.mousePosition.y > cardPlay.y*-1)
         {
             currentState = 2;
             playArrow.SetActive(false);
         }
     }
-    private bool TryToPlayCharacterCard(Ray ray, Character characterCard)
+    private bool TryToPlayRitualCard(Ritual ritualCard)
     {
-        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, gridLayerMask);
-        if (hit.collider != null && hit.collider.GetComponent<GridCell>())
+        SpellDisplay spell = spellbookManager.getCurrentSpell();
+        if (spell.ritualAttachments < spell.maxAttachments)
         {
-            GridCell cell = hit.collider.GetComponent<GridCell>();
-            Vector2 targetPos = cell.gridIndex;
-            if (cell.gridIndex.x < maxColumn && gridManager.AddObjectToGrid(characterCard.prefab, targetPos))
+            if (ritualCard.typeLocked)
             {
-                discardManager.AddToDiscard(cardData);
-                handManager.cardsInHand.Remove(gameObject);
-                handManager.UpdateHandVisuals();
-                Destroy(gameObject);
-                return true;
+                if (ritualCard.applicableTypes.Contains(spell.spellData.Type))
+                {
+                    PlayRitualCard(ritualCard, spell);
+                    return true;
+                }
+                else
+                {
+                    Debug.LogWarning("Incorrect typing");
+                    return false;
+                }
             }
             else
-                return false;
+            {
+                PlayRitualCard(ritualCard, spell);
+                return true;
+            }
         }
         else
-            return false;
-    }
-    private bool TryToPlaySpellCard(Ray ray, Spell spellCard)
-    {
-        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity,characterLayerMask);
-        if (hit.collider != null)
         {
-           discardManager.AddToDiscard(cardData);
-           handManager.cardsInHand.Remove(gameObject);
-           handManager.UpdateHandVisuals();
-           Destroy(gameObject);
-            return true;
+            Debug.LogWarning("Too many rituals!");
+            return false;
         }
-        else return false;
+    }
+    public void PlayRitualCard(Ritual ritualCard, SpellDisplay spell)
+    {
+        spell.ApplyRitual(ritualCard);
+        discardManager.AddToDiscard(cardData);
+        handManager.cardsInHand.Remove(gameObject);
+        handManager.UpdateHandVisuals();
+        Destroy(gameObject);
     }
 
     private async Task LerpToPositionStateZero(Vector3 targetPosition, Quaternion targetRotation)

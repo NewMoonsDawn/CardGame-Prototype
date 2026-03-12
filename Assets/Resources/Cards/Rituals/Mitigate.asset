@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ee6543087b37f04c9be608955e075d2, type: 3}
+  m_Name: Mitigate
+  m_EditorClassIdentifier: 
+  cardName: Mitigate
+  cardType: 1
+  cardSprite: {fileID: 21300000, guid: 68cd94da380e79043bbb9b47b0ba7697, type: 3}
+  description: Give any spell Block Y
+  damage: 0
+  drawAmount: 0
+  block: 5
+  typeLocked: 0
+  applicableTypes: 

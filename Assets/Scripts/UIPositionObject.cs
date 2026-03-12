@@ -9,7 +9,7 @@ public class UIObjectPositioner : MonoBehaviour
     public float widthMultiplier = 1f;
     public float heightMultiplier = 1f;
 
-    public bool updatePosition = false;
+    public bool updatePosition = true;
 
     void Start()
     {

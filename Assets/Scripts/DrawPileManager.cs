@@ -9,7 +9,7 @@ public class DrawPileManager : MonoBehaviour
     public List<Card> drawPile = new List<Card>();
 
     private int currentIndex = 0;
-    public int startingHand = 6;
+    public int startingHand = 4;
     public int maxHandSize;
     public int currentHandSize;
     private HandManager handManager;

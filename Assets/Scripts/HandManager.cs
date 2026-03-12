@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using CardGame;
 using System;
+using Unity.VisualScripting;
 
 public class HandManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class HandManager : MonoBehaviour
     public float horizontalSpacing = 100f;
     public float verticalSpacing = 100f;
 
+    [HideInInspector]
     public int maxHandSize;
 
     public List<GameObject> cardsInHand = new List<GameObject>();

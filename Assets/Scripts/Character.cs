@@ -8,8 +8,6 @@ public class Character : Card
 { 
 
     public int range;
-    public AttackPattern attackPattern;
-    public PriorityTarget priorityTarget;
     public List<ElementType> damageType;
     public GameObject prefab;
     public int health;

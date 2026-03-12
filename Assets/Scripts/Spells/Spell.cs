@@ -7,11 +7,12 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName = "New Spell", menuName = "Spell")]
 public class Spell : ScriptableObject
 {
-    public SpellType Type;
+    public ElementType Type;
     public string spellName;
     public string description;
     public Sprite spellArt;
     public List<Card> spellAttachements = new List<Card>();
     public int damage;
     public int block;
+    public int draw;
 }

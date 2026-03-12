@@ -11,7 +11,7 @@ TagManager:
   - 
   - Water
   - UI
-  - Grid
+  - Spellbook
   - Characters
   - 
   - 
@@ -40,4 +40,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Spellbook
+    uniqueID: 2980774539
+    locked: 0
+  - name: Cards
+    uniqueID: 1597002063
     locked: 0
