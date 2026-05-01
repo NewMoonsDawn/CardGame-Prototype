@@ -44,7 +44,10 @@ public class CardDisplay : MonoBehaviour
     void Start()
     {
         InitializeSprites();
-        UpdateCardDisplay();
+        if(cardData!= null)
+        {
+            UpdateCardDisplay();
+        }
     }
 
     public void UpdateCardDisplay()
@@ -76,7 +79,7 @@ public class CardDisplay : MonoBehaviour
 
     private void UpdateDisplayRitualCard(Ritual ritual)
     {
-        descriptionText.text = cardData.description.Replace("X", ritual.damage.ToString()).Replace("Y",ritual.block.ToString());
+        descriptionText.text = cardData.description.Replace("X", ritual.damage.ToString()).Replace("Y",ritual.block.ToString()).Replace("Z",ritual.drawAmount.ToString());
     }
 
    // public void UpdateDisplayCharacterCard(Character character)

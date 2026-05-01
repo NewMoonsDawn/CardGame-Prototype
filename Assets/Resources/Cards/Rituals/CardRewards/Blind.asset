@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ee6543087b37f04c9be608955e075d2, type: 3}
-  m_Name: Sharpen
+  m_Name: Blind
   m_EditorClassIdentifier: 
-  cardName: Sharpen
-  cardType: 5
-  cardSprite: {fileID: 21300000, guid: 31639be7ef9ddf042936ebeab967d3f3, type: 3}
-  description: Give a Physical spell Damage X and Draw 1
+  cardName: Blind
+  cardType: 1
+  cardSprite: {fileID: 21300000, guid: 78fcfa3ee3175d4479612a8a1f74161b, type: 3}
+  description: Give a spell Damage X, Block Y, Draw Z
   damage: 3
   drawAmount: 1
-  block: 0
-  typeLocked: 1
-  applicableTypes: 05000000
+  block: 3
+  typeLocked: 0
+  applicableTypes: 

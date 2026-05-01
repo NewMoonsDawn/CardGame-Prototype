@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f88fcfc3878c05469aba564311bad64, type: 3}
   m_Name: Fireball
   m_EditorClassIdentifier: 
-  Type: 0
+  Type: 1
   spellName: Fireball
   description: Inflict *X* Damage
-  spellArt: {fileID: 21300000, guid: 333562055afa53d41a30d01b654d7a7e, type: 3}
+  spellArt: {fileID: 21300000, guid: adf46629f0270b943b164cedeb273904, type: 3}
   spellAttachements: []
   damage: 6
   block: 0
   draw: 0
+  passive: {fileID: 0}
+  passiveSelf: 0

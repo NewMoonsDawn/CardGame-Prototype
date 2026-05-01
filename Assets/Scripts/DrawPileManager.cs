@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using CardGame;
 using TMPro;
+using System;
 
 public class DrawPileManager : MonoBehaviour
 {
@@ -34,19 +35,20 @@ public class DrawPileManager : MonoBehaviour
         Utility.Shuffle(drawPile);
         UpdateDrawPileCount();
     }
-    public void BattleSetup(int numberOfCardsToDraw, int setMaxHandSize)
+    public void BattleSetup()
     {
-        maxHandSize = setMaxHandSize;
-        for (int i = 0; i < numberOfCardsToDraw; i++)
-        {
-            DrawCard(handManager);
-        }
+        Debug.LogException(new NotImplementedException());
     }
     public void DrawCard(HandManager handManager)
     {
         if (drawPile.Count == 0)
         {
             RefillDeckFromDiscard();
+        }
+        if (drawPile.Count == 0)
+        {
+            Debug.LogWarning("Draw pile still empty after shuffle");
+            return;
         }
         Card nextCard = drawPile[currentIndex];
         if (handManager.AddCardToHand(nextCard))

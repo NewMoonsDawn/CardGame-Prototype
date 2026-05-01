@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Conjure
   m_EditorClassIdentifier: 
   cardName: Conjure
-  cardType: 3
-  cardSprite: {fileID: 21300000, guid: 38e5d85e081a9f54293c3db152ea502f, type: 3}
-  description: Give any spell Draw 2 and Block Y
+  cardType: 4
+  cardSprite: {fileID: 21300000, guid: 0563763d7a7b3804fa8a72cfb5d493fa, type: 3}
+  description: Give any spell Draw Z and Block Y
   damage: 0
-  drawAmount: 2
-  block: 2
+  drawAmount: 1
+  block: 1
   typeLocked: 0
   applicableTypes: 

@@ -2,8 +2,6 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using CardGame;
-using Unity.Burst.CompilerServices;
-using UnityEditor.U2D.Animation;
 public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
     private RectTransform rectTransform;
@@ -11,7 +9,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     private RectTransform canvasRectTransform;
 
     private Vector3 originalScale;
-    private int currentState = 0;
+    public int currentState = 0;
     private Quaternion originalRotation;
     private Vector3 originalPosition;
 
@@ -125,7 +123,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (currentState == 0 && !floating) //If its in an await, don't set original positions
+        if (currentState == 0 && !floating && GameManager.Instance.playerManager.playerTurn) //If its in an await, don't set original positions
         {
             originalPosition = rectTransform.localPosition;
             originalRotation = rectTransform.localRotation;
@@ -153,7 +151,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     {
         if (currentState == 2)
         {
-            if (rectTransform.localPosition.y < cardPlay.y)
+            if (Input.mousePosition.y < cardPlay.y*-1)
             {
                 currentState = 3;
                 //playArrow.SetActive(true);
@@ -203,7 +201,7 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
             }
         }
 
-        if (Input.mousePosition.y > cardPlay.y*-1)
+        if (Input.mousePosition.y > cardPlay.y*-1+50)
         {
             currentState = 2;
             playArrow.SetActive(false);
@@ -211,27 +209,31 @@ public class CardMovement : MonoBehaviour, IDragHandler, IPointerDownHandler, IP
     }
     private bool TryToPlayRitualCard(Ritual ritualCard)
     {
-        SpellDisplay spell = spellbookManager.getCurrentSpell();
-        if (spell.ritualAttachments < spell.maxAttachments)
+        SpellDisplay spell = spellbookManager.GetCurrentSpell();
+        if (spell.spellData.spellAttachements.Count < spell.maxAttachments)
         {
-            if (ritualCard.typeLocked)
+            if (spell.CanApplyRitual(ritualCard))
             {
-                if (ritualCard.applicableTypes.Contains(spell.spellData.Type))
+                if (ritualCard.typeLocked)
+                {
+                    if (ritualCard.applicableTypes.Contains(spell.spellData.Type))
+                    {
+                        PlayRitualCard(ritualCard, spell);
+                        return true;
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Incorrect typing");
+                        return false;
+                    }
+                }
+                else
                 {
                     PlayRitualCard(ritualCard, spell);
                     return true;
                 }
-                else
-                {
-                    Debug.LogWarning("Incorrect typing");
-                    return false;
-                }
             }
-            else
-            {
-                PlayRitualCard(ritualCard, spell);
-                return true;
-            }
+            else return false;
         }
         else
         {

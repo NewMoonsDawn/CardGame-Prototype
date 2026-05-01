@@ -1,7 +1,6 @@
-using System.Collections;
+using CardGame;
 using System.Collections.Generic;
 using UnityEngine;
-using CardGame;
 
 
 public class DeckManager : MonoBehaviour
@@ -14,45 +13,41 @@ public class DeckManager : MonoBehaviour
     private DrawPileManager drawPileManager;
     private SpellbookManager spellbookManager;
     private SpellManager spellManager;
-    private bool startBattleRun = true;
+    //private bool startBattleRun = true;
     private void Start()
     {
        // Card[] cards = Resources.LoadAll<Card>("Cards");
 
        // allcards.AddRange(cards);
     }
-    void Awake()
-    {
-        if (drawPileManager == null)
-        {
-            drawPileManager = FindObjectOfType<DrawPileManager>();
-        }
-        if (handManager == null)
-        {
-            handManager = FindObjectOfType<HandManager>();
-        }
-        if(spellbookManager == null)
-        {
-            spellbookManager = FindObjectOfType<SpellbookManager>();
-        }
-        if(spellManager == null)
-        {
-            spellManager = FindObjectOfType<SpellManager>();
-        }
-    }
-    private void Update()
-    {
-        if (startBattleRun)
-        {
-            BattleSetup();  
-        }
-    }
+    /*private void Update()
+    //{
+      //  if (startBattleRun)
+        //{
+          //  BattleSetup();  
+        //}
+    }*/
     public void BattleSetup()
     {
+     if (drawPileManager == null)
+       {
+                drawPileManager = FindObjectOfType<DrawPileManager>();
+            }
+            if (handManager == null)
+            {
+                handManager = FindObjectOfType<HandManager>();
+            }
+            if (spellbookManager == null)
+            {
+                spellbookManager = FindObjectOfType<SpellbookManager>();
+            }
+        if (spellManager == null)
+    {
+      spellManager = FindObjectOfType<SpellManager>();
+    }
         handManager.BattleSetup(maxHandSize);
-        //drawPileManager.MakeDrawPile(allcards);
-        drawPileManager.BattleSetup(startingHand, maxHandSize);
-        startBattleRun = false;
+        drawPileManager.MakeDrawPile(allcards);
+        //startBattleRun = false;
         spellbookManager.BattleSetup(spellManager);
     }
 }

@@ -64,6 +64,7 @@ public class HandManager : MonoBehaviour
                 float verticalOffset = verticalSpacing * (1 - normalizedPosition * normalizedPosition);
 
                 cardsInHand[i].transform.localPosition = new Vector3(horizontalOffset, verticalOffset, i);
+                cardsInHand[0].GetComponent<Canvas>().sortingOrder = i+2;
             }
         }
     }

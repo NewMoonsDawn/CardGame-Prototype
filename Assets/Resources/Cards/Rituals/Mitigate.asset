@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Mitigate
   m_EditorClassIdentifier: 
   cardName: Mitigate
-  cardType: 1
-  cardSprite: {fileID: 21300000, guid: 68cd94da380e79043bbb9b47b0ba7697, type: 3}
+  cardType: 2
+  cardSprite: {fileID: 21300000, guid: 8868af6c66f2fa84b90374efd5f03811, type: 3}
   description: Give any spell Block Y
   damage: 0
   drawAmount: 0
-  block: 5
+  block: 3
   typeLocked: 0
   applicableTypes: 

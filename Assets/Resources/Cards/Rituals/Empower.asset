@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Empower
   m_EditorClassIdentifier: 
   cardName: Empower
-  cardType: 00000000
-  cardSprite: {fileID: 21300000, guid: 333562055afa53d41a30d01b654d7a7e, type: 3}
+  cardType: 1
+  cardSprite: {fileID: 21300000, guid: cec6848cce8e6f84abfd3005a13c7cda, type: 3}
   description: Give any spell Damage X
-  elementType: 00000000
-  damage: 6
+  damage: 4
   drawAmount: 0
   block: 0
+  typeLocked: 0
+  applicableTypes: 

@@ -44,5 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 490bea7d3c523cf4d8112b1a7ba58693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ownedSpells:
+  startingOwnedSpells:
   - {fileID: 11400000, guid: 1a1f79e2c560833459e807c8681fd75b, type: 2}
+  - {fileID: 11400000, guid: dd52d6024a7d61542a14878705c250a9, type: 2}
+  - {fileID: 11400000, guid: 48f13f1cca72b6c4480c0a1f17d8f007, type: 2}
+  - {fileID: 11400000, guid: 947e433ab9f768944903e35b3f6710d7, type: 2}
+  ownedSpells: []

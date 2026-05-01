@@ -8,46 +8,76 @@ public class SpellbookManager : MonoBehaviour
     private SpellManager spellManager;
     public GameObject spellObject;
     private int spellIndex;
+    private PlayerManager playerManager;
+
+    private void Awake()
+    {
+        playerManager = GameManager.Instance.playerManager;
+    }
     public void BattleSetup(SpellManager spellManager)
     {
+        spellObject = FindObjectOfType<SpellDisplay>().gameObject;
         foreach (var spell in spellManager.ownedSpells)
         {
             spells.Add(Instantiate(spell));
         }
-        setCurrentSpell(0);
+        this.spellManager = spellManager;
+        SetCurrentSpell(0);
     }
     //Buttons Logic
     public void NextSpell()
     {
-        Debug.Log("Next");
         spellIndex++;
         if (spellIndex >= spells.Count)
         {
             spellIndex = 0;
         }
-        setCurrentSpell(spellIndex);
+        SetCurrentSpell(spellIndex);
     }
     public void PreviousSpell()
     {
-        Debug.Log("Previous");
         spellIndex--;
         if (spellIndex < 0)
         {
             spellIndex = spells.Count - 1;
         }
-        setCurrentSpell(spellIndex);
+        SetCurrentSpell(spellIndex);
     }
     public void CastSpell()
     {
-        //TODO: END OF TURN LOGIC
+        if (playerManager.playerTurn)
+        {
+            //TODO: Handle Buffs/Debuffs
+            Spell spell = GetCurrentSpell().spellData;
+            if (spell.damage > 0)
+            {
+                GameManager.Instance.enemyManager.enemyController.ReceiveDamage(playerManager.player, spell.damage);
+            }
+            if (spell.block > 0)
+            {
+                playerManager.playerController.GainBlock(spell.block);
+            }
+            if (spell.draw != 0)
+            {
+                playerManager.player.queuedCardDraw += spell.draw;
+            }
+            spell = spellManager.ownedSpells.Find(x => x.spellName == spell.spellName);
+            ResetSpell(spell);
+            playerManager.EndPlayerTurn();
+        }
     }
-    public void setCurrentSpell(int spellIndex)
+    public void SetCurrentSpell(int spellIndex)
     {
         spellObject.GetComponent<SpellDisplay>().spellData = spells[spellIndex];
-        spellObject.GetComponent<SpellDisplay>().updateSpellDisplay();
+        spellObject.GetComponent<SpellDisplay>().UpdateSpellDisplay();
     }
-    public SpellDisplay getCurrentSpell()
+    public SpellDisplay GetCurrentSpell()
     {
         return spellObject.GetComponent<SpellDisplay>();
+    }
+    public void ResetSpell(Spell spell)
+    {
+        spells[spellIndex] = Instantiate(spellManager.ownedSpells.Find(x => x.spellName == spell.spellName));
+        SetCurrentSpell(spellIndex);
     }
 }

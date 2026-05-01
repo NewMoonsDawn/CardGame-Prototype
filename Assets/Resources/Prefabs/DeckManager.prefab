@@ -44,7 +44,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fa9571129cc5a84189c3869eb5d33ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allcards: []
-  startingHand: 6
-  maxHandSize: 0
+  allcards:
+  - {fileID: 11400000, guid: bf866ac4a40f6f14fb2eb5e121ae42a5, type: 2}
+  - {fileID: 11400000, guid: bf866ac4a40f6f14fb2eb5e121ae42a5, type: 2}
+  - {fileID: 11400000, guid: bf866ac4a40f6f14fb2eb5e121ae42a5, type: 2}
+  - {fileID: 11400000, guid: bf866ac4a40f6f14fb2eb5e121ae42a5, type: 2}
+  - {fileID: 11400000, guid: 95af6c02ab49ca9499913e2151f773d1, type: 2}
+  - {fileID: 11400000, guid: 95af6c02ab49ca9499913e2151f773d1, type: 2}
+  - {fileID: 11400000, guid: 95af6c02ab49ca9499913e2151f773d1, type: 2}
+  - {fileID: 11400000, guid: 95af6c02ab49ca9499913e2151f773d1, type: 2}
+  - {fileID: 11400000, guid: fc0186c01efbb50469feca4c7a20662e, type: 2}
+  - {fileID: 11400000, guid: c43926b190936cc4187cb0d1f2e7827f, type: 2}
+  - {fileID: 11400000, guid: 7855eb668d0790f479237de0d7ded385, type: 2}
+  - {fileID: 11400000, guid: 7855eb668d0790f479237de0d7ded385, type: 2}
+  startingHand: 4
+  maxHandSize: 6
   currentHandSize: 0

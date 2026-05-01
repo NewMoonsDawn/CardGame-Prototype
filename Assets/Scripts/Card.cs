@@ -19,6 +19,7 @@ namespace CardGame
 
     public enum ElementType
     {
+        None,
         Fire,
         Earth,
         Water,

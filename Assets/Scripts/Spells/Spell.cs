@@ -15,4 +15,6 @@ public class Spell : ScriptableObject
     public int damage;
     public int block;
     public int draw;
+    public Passive passive;
+    public bool passiveSelf;
 }

@@ -15,7 +15,6 @@ public class SpellDisplay : MonoBehaviour
     public TMP_Text spellName;
     public TMP_Text spellDescription;
     public List<Image> spellAttachmentIcons = new List<Image>();
-    public int ritualAttachments = 0;
     public int maxAttachments = 4;
     public Image spellArt;
 
@@ -26,55 +25,61 @@ public class SpellDisplay : MonoBehaviour
         {"Water",Color.blue},
     };
 
-    public void updateSpellDisplay()
+    public void UpdateSpellDisplay()
     {
         Color typeColor = new Color();
-        spellName.text = spellData.name;
+        spellName.text = spellData.spellName;
         string descriptionText = spellData.description.Replace("*X*", spellData.damage.ToString());
         descriptionText = descriptionText.Replace("*Y*", spellData.block.ToString());
         descriptionText = descriptionText.Replace("*Z*", spellData.draw.ToString());
         spellDescription.text = descriptionText;
         spellData.description = descriptionText;
         typeColors.TryGetValue(spellData.Type.ToString(), out typeColor);
-        Debug.Log(spellData.name + " " + spellData.Type.ToString() + " " + typeColor.ToString());
-        spellBackground.color = typeColor;
+        //spellBackground.color = typeColor;
         spellArt.sprite = spellData.spellArt;
         foreach (Image image in spellAttachmentIcons)
         {
             image.sprite = null;
+            image.color = new Color(1f, 1f, 1f, 0f);
         }
         for (int i = 0; i < spellData.spellAttachements.Count; i++)
         {
             spellAttachmentIcons[i].sprite = spellData.spellAttachements[i].cardSprite;
+            if (spellData.spellAttachements[i] !=null)
+            {
+                spellAttachmentIcons[i].color = new Color(1f, 1f, 1f, 1f);
+            }
+            else
+            {
+                spellAttachmentIcons[i].color = new Color(1f, 1f, 1f, 0f);
+            }
         }
     }
 
     public void ApplyRitual(Ritual ritual)
     {
-        if(ritual.damage> 0)
+        if(ritual.damage != 0)
         {
-            updateDamage(ritual.damage);
+            UpdateDamage(ritual.damage);
         }
-        if(ritual.block> 0)
+        if(ritual.block != 0)
         {
-            updateBlock(ritual.block);
+            UpdateBlock(ritual.block);
         }
-        if (ritual.drawAmount > 0)
+        if (ritual.drawAmount != 0)
         {
-           updateDraw(ritual.drawAmount);
+           UpdateDraw(ritual.drawAmount);
         }
         spellData.spellAttachements.Add(ritual);
-        updateSpellDisplay();
+        UpdateSpellDisplay();
     }
 
-    public void updateDamage(int damage)
+    public void UpdateDamage(int damage)
     {
         string newDescription;
         damage += spellData.damage;
-        Debug.Log(spellData.damage + " " + damage);
-        if (spellData.damage > 0)
+        if (spellData.damage != 0)
         {
-            Debug.Log("???");
             string color = "";
             if (damage < spellData.damage)
             {
@@ -84,8 +89,7 @@ public class SpellDisplay : MonoBehaviour
             {
                 color = "#00FF00"; // Set Color to Green
             }
-            newDescription = Regex.Replace(spellData.description, "[0-9]+ (Damage)", $"<color={color}>{damage} </color>Damage");
-            Debug.Log(newDescription);
+            newDescription = Regex.Replace(spellData.description, "(<color=#[0-z]+)?[0-9]+(<\\/color>)? (Damage)", $"<color={color}>{damage}</color> Damage");
         }
         else
         {
@@ -95,11 +99,11 @@ public class SpellDisplay : MonoBehaviour
         spellData.description = newDescription;
         spellDescription.text = newDescription;
     }
-    public void updateBlock(int block)
+    public void UpdateBlock(int block)
     {
         string newDescription;
         block += spellData.block;
-        if (spellData.block > 0)
+        if (spellData.block != 0)
         {
             string color = "";
             if (block < spellData.block)
@@ -111,7 +115,7 @@ public class SpellDisplay : MonoBehaviour
                 color = "#00FF00"; // Set Color to Green
             }
 
-            newDescription = Regex.Replace(spellData.description, "[0-9]+ (Block)", $"<color={color}>{block} </color>Block");
+            newDescription = Regex.Replace(spellData.description, "(<color=#[0-z]+)?[0-9]+ (<\\/color>)?(Block)", $"<color={color}>{block} </color>Block");
         }
         else
         {
@@ -121,11 +125,11 @@ public class SpellDisplay : MonoBehaviour
         spellData.description = newDescription;
         spellDescription.text = newDescription;
     }
-    public void updateDraw(int draw)
+    public void UpdateDraw(int draw)
     {
         string newDescription;
         int newDraw = spellData.draw + draw;
-        if (spellData.draw > 0)
+        if (spellData.draw != 0)
         {
             string drawColor = "";
             if (newDraw < spellData.draw)
@@ -137,7 +141,7 @@ public class SpellDisplay : MonoBehaviour
                 drawColor = "#00FF00"; // Set Color to Green
             }
 
-            newDescription = Regex.Replace(spellData.description, "(Draw) [0-9]+", $"Draw <color={drawColor}>{newDraw}</color>");
+            newDescription = Regex.Replace(spellData.description, "(<color=#[0-z]+)?(Draw) (<\\/color>)?[0-9]+", $"Draw <color={drawColor}>{newDraw}</color>");
         }
         else
         {
@@ -146,5 +150,28 @@ public class SpellDisplay : MonoBehaviour
         spellData.draw = newDraw;
         spellData.description = newDescription;
         spellDescription.text = newDescription;
+    }
+
+    public bool CanApplyRitual(Ritual ritual)
+    {
+        if(ritual.damage < 0 )
+        {
+            if (spellData.damage + ritual.damage < 0)
+            {
+                return false;
+            }
+            else
+                return true;
+        }
+        if (ritual.block < 0)
+        {
+            if (spellData.block + ritual.block < 0)
+            {
+                return false;
+            }
+            else
+                return true;
+        }
+        return true;
     }
 }
